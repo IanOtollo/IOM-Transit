@@ -33,7 +33,7 @@ const arcsData = [
 
 export default function GlobeWidget() {
   const [windowWidth, setWindowWidth] = useState(600);
-  const globeRef = useRef<any>();
+  const globeRef = useRef<any>(null);
 
   useEffect(() => {
     // Set width correctly on mount and resize
