@@ -53,8 +53,9 @@ export default function GlobeWidget() {
     const controls = globeRef.current?.controls();
     if (controls) {
       controls.autoRotate = true;
-      controls.autoRotateSpeed = 1.0;
-      controls.enableZoom = false; // Usually bad for scrolling pages
+      controls.autoRotateSpeed = 3.5; 
+      controls.enableZoom = false;
+      controls.enableRotate = false; // Disable manual drag rotation
     }
     
     // Set point of view to Africa
@@ -62,7 +63,7 @@ export default function GlobeWidget() {
   }, []);
 
   return (
-    <div id="globe-container" className="w-full h-[400px] lg:h-[600px] flex items-center justify-center cursor-grab active:cursor-grabbing overflow-hidden">
+    <div id="globe-container" className="w-full h-[400px] lg:h-[600px] flex items-center justify-center overflow-hidden pointer-events-none">
       <Globe
         ref={globeRef}
         width={windowWidth}
