@@ -10,19 +10,17 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-// CRM & Logistics Hub Simulator
 app.get('/api/health', (req, res) => {
   res.json({ status: 'healthy', timestamp: new Date() });
 });
 
-// Quotation Request endpoint
 app.post('/api/quotes', async (req, res) => {
   try {
-    const { 
-      fullName, company, email, phone, 
-      serviceRequired, cargoType, origin, 
-      destination, estimatedWeight, preferredDate, 
-      additionalDetails 
+    const {
+      fullName, company, email, phone,
+      serviceRequired, cargoType, origin,
+      destination, estimatedWeight, preferredDate,
+      additionalDetails
     } = req.body;
 
     const quote = await prisma.quote.create({
@@ -43,11 +41,11 @@ app.post('/api/quotes', async (req, res) => {
 
     // In production, this would trigger email notifications via SendGrid/AWS SES
     console.log(`[IOM Transit] New Quotation Request: ${quote.id} from ${company}`);
-    
-    res.status(201).json({ 
-      success: true, 
+
+    res.status(201).json({
+      success: true,
       message: 'Quotation request received. A logistics expert will respond within 2 business hours.',
-      id: quote.id 
+      id: quote.id
     });
   } catch (error) {
     console.error('Error creating quote:', error);

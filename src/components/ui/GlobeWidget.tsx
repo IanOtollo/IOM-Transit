@@ -52,7 +52,7 @@ export default function GlobeWidget() {
     const controls = globeRef.current?.controls();
     if (controls) {
       controls.autoRotate = true;
-      controls.autoRotateSpeed = 4.0; // Slightly faster as requested
+      controls.autoRotateSpeed = 2.2; // Reduced as requested for better visibility
       controls.enableZoom = false;
       controls.enableRotate = false; // Disable manual drag rotation
     }
