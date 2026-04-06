@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { TopProgressBar } from "@/components/layout/GlobalLayoutClient";
+import { Analytics } from '@vercel/analytics/next';
 
 const cormorant = Cormorant_Garamond({
   weight: ["300", "400", "500", "600", "700"],
@@ -49,6 +50,7 @@ export default function RootLayout({
         <div className="lg:pl-16">
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   );
