@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Quote {
+  id                String   @id @default(cuid())
+  fullName          String
+  company           String
+  email             String
+  phone             String
+  serviceRequired   String
+  cargoType         String
+  origin            String
+  destination       String
+  estimatedWeight   Float?
+  preferredDate     DateTime?
+  additionalDetails String?
+  status            String   @default("PENDING") // PENDING, REVIEWED, CONTACTED, QUOTED
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Fleet {
+  id            String   @id @default(cuid())
+  brand         String   // Scania, Volvo, Mercedes
+  model         String
+  payload       String
+  configuration String
+  range         String
+  units         Int
+  order         Int      @default(0)
+}
+
+model Staff {
+  id             String   @id @default(cuid())
+  name           String
+  role           String
+  qualifications String
+  initials       String
+  isCeo          Boolean  @default(false)
+  bio            String?
+  order          Int      @default(0)
+}

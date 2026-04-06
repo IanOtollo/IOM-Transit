@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model QuoteRequest {
+  id           String   @id @default(cuid())
+  fullName     String
+  companyName  String
+  email        String
+  phone        String
+  service      String
+  cargoType    String
+  origin       String
+  destination  String
+  weight       String
+  date         String
+  details      String?
+  createdAt    DateTime @default(now())
+}

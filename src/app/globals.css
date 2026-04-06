@@ -1,0 +1,292 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a1628;
+  --foreground: #ffffff;
+  --navy: #0a1628;
+  --navy-mid: #112240;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --background-alt: #f8f6f1;
+  --text-muted: #8a9bb5;
+  --border-gold: rgba(201, 168, 76, 0.2);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-navy: var(--navy);
+  --color-navy-mid: var(--navy-mid);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-background-alt: var(--background-alt);
+  --color-text-muted: var(--text-muted);
+  --color-border-gold: var(--border-gold);
+  
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+}
+
+* {
+  border-radius: 0 !important;
+}
+
+/* Hard limit on any straggling radis */
+.subtle-radius {
+  border-radius: 4px !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  cursor: default; /* Keep default unless custom canvas overrides */
+}
+
+body {
+  background-color: var(--navy);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* ─────────────────────────────────────────
+   GLOBAL TYPOGRAPHY SYSTEM
+   ───────────────────────────────────────── */
+
+/* Base body defaults — applied globally */
+body {
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* ── Heading Scale (Cormorant Garamond) ── */
+
+/* H1 — Hero entrances (homepage, service page heroes) */
+.type-h1-hero {
+  font-family: var(--font-heading);
+  font-size: clamp(56px, 8vw, 120px);
+  line-height: 0.9;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* H1 — Inner pages (services, about, fleet) */
+.type-h1-page {
+  font-family: var(--font-heading);
+  font-size: clamp(42px, 6vw, 80px);
+  line-height: 0.95;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* H2 — Section headings */
+.type-h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 58px);
+  line-height: 1.05;
+  font-weight: 700;
+}
+
+/* H3 — Card and subsection headings */
+.type-h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 2.5vw, 28px);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+/* H4 — Label headings */
+.type-h4 {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+/* ── Body Scale (DM Sans) ── */
+
+/* Large body — hero subheadings, intro paragraphs */
+.type-body-large {
+  font-family: var(--font-body);
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* Standard body — general paragraph text */
+.type-body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* Small body — card descriptions, supporting text */
+.type-body-small {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.65;
+  font-weight: 400;
+}
+
+/* Micro — labels, tags, spaced caps identifiers */
+.type-micro {
+  font-family: var(--font-body);
+  font-size: clamp(11px, 0.8vw, 12px);
+  letter-spacing: 0.18em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* Navigation links */
+.type-nav {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+/* Buttons */
+.type-btn {
+  font-family: var(--font-body);
+  font-size: clamp(13px, 1vw, 14px);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+/* Footer body text */
+.type-footer {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Form labels */
+.type-form-label {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* Form inputs */
+.type-form-input {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/* Stats numbers */
+.type-stat {
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Decorative watermark text */
+.type-watermark {
+  font-family: var(--font-heading);
+  font-size: clamp(160px, 20vw, 280px);
+  line-height: 0.8;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  opacity: 0.04;
+  color: var(--foreground);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Legacy aliases kept for backward compatibility */
+.text-extreme-heading {
+  font-size: clamp(56px, 8vw, 120px);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+.text-extreme-sub {
+  font-size: clamp(36px, 6vw, 80px);
+  line-height: 0.95;
+  font-weight: 300;
+}
+.text-watermark {
+  font-size: clamp(160px, 20vw, 280px);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  opacity: 0.04;
+  color: var(--foreground);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Mobile typography adjustments */
+@media (max-width: 640px) {
+  .type-h1-hero { font-size: clamp(44px, 12vw, 72px); }
+  .type-h1-page { font-size: clamp(36px, 10vw, 56px); }
+  .type-h2 { font-size: clamp(28px, 8vw, 44px); }
+  .type-h3 { font-size: clamp(18px, 5vw, 24px); }
+  .type-body-large { font-size: 17px; }
+  .type-stat { font-size: clamp(32px, 8vw, 44px); }
+  .type-watermark { font-size: clamp(120px, 30vw, 200px); }
+  .text-extreme-heading { font-size: clamp(48px, 14vw, 84px); }
+  .text-extreme-sub { font-size: clamp(32px, 10vw, 60px); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--navy);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-light);
+}
+
+/* Page Fade Transition */
+.page-fade-enter {
+  opacity: 0;
+}
+.page-fade-enter-active {
+  opacity: 1;
+  transition: opacity 400ms ease-in;
+}
+.page-fade-exit {
+  opacity: 1;
+}
+.page-fade-exit-active {
+  opacity: 0;
+  transition: opacity 400ms ease-out;
+}
+
+.gold-pulse {
+  position: relative;
+}
+.gold-pulse::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.7);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(201, 168, 76, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); }
+}
+
