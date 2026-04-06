@@ -48,24 +48,22 @@ export default function GlobeWidget() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    // Spin the globe
+  const handleGlobeReady = () => {
     const controls = globeRef.current?.controls();
     if (controls) {
       controls.autoRotate = true;
-      controls.autoRotateSpeed = 3.5; 
+      controls.autoRotateSpeed = 4.0; // Slightly faster as requested
       controls.enableZoom = false;
       controls.enableRotate = false; // Disable manual drag rotation
     }
-    
-    // Set point of view to Africa
-    globeRef.current?.pointOfView({ lat: 0, lng: 30, altitude: 2 });
-  }, []);
+    globeRef.current?.pointOfView({ lat: -1.2921, lng: 36.8219, altitude: 2.2 }); // Point to Nairobi/East Africa
+  };
 
   return (
-    <div id="globe-container" className="w-full h-[400px] lg:h-[600px] flex items-center justify-center overflow-hidden pointer-events-none">
+    <div id="globe-container" className="w-full h-[400px] lg:h-[600px] flex items-center justify-center overflow-hidden">
       <Globe
         ref={globeRef}
+        onGlobeReady={handleGlobeReady}
         width={windowWidth}
         height={typeof window !== 'undefined' && window.innerWidth >= 1024 ? 600 : 400}
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
